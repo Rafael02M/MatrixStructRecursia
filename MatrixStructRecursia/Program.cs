@@ -107,7 +107,7 @@ namespace Project
             {
                 for(int j = 0; j < m; j++)
                 {
-                    matrix[i, j] = random.Next(1, 2);
+                    matrix[i, j] = random.Next(1, 10);
                 }
             }
 
