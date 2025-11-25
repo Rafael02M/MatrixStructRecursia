@@ -32,9 +32,8 @@ namespace Project
             return;
             }
             Matrix[x, y + 1] = newValue;
-            Matrix[x, y] = newValue;
 
-            ToRight(x, y + 1, newValue, oldValue);
+            ToRight(x, y + 1, oldValue, newValue);
         }
         public void ToLeft(int x, int y, int oldValue, int newValue)
         {
@@ -47,7 +46,6 @@ namespace Project
                 return;
             }
             Matrix[x, y - 1] = newValue;
-            Matrix[x, y] = newValue;
 
             ToLeft(x, y - 1, oldValue, newValue);
         }
@@ -62,7 +60,6 @@ namespace Project
                 return;
             }
             Matrix[x - 1, y] = newValue;
-            Matrix[x, y] = newValue;
 
             ToUp(x - 1, y, oldValue, newValue);
         }
@@ -78,7 +75,6 @@ namespace Project
                 return;
             }
             Matrix[x + 1, y] = newValue;
-            Matrix[x, y] = newValue;
 
             ToDown(x + 1, y, oldValue, newValue);
         }
@@ -126,7 +122,10 @@ namespace Project
                 Console.WriteLine();
             }
             MatrixModifier mtx = new MatrixModifier(startX, startY, newValue, matrix);
+            mtx.Matrix[startX, startY] = newValue; 
+            
             int oldValue = mtx.GetOldValue();
+            
             mtx.ToRight(startX, startY, oldValue, newValue);
             mtx.ToLeft(startX, startY, oldValue, newValue);
             mtx.ToUp(startX, startY, oldValue, newValue);
